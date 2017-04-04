@@ -1,0 +1,29 @@
+@import "bootstrap";
+
+
+.addTodoElementInput {
+	margin-left : 5%;
+	width: 80%;
+	margin-top: 5px;
+	display: inline;
+}
+
+.addTodoElementInput input{
+	width: 95%;
+	display: inline;
+}
+
+.addTodoElementButton a {
+    color: #5CB85C;
+    display: inline;
+
+}
+
+.icon-success {
+	padding: 0px;
+	margin: 0px;
+}
+
+.addTodo {
+	margin: 5px;
+}

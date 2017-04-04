@@ -1,0 +1,60 @@
+<div class="jumbotron text-center">
+
+
+	<h2>TODO - List</h2>
+	{{#if showAddForm}}
+		<button class="btn btn-success btn-xs addTodo" {{action 'toggleAddForm'}}>Add</button>
+	{{else}}
+		<button class="btn btn-info btn-xs addTodo" {{action 'toggleAddForm'}}>Cancel</button>
+		<button class="btn btn-success btn-xs addTodo" {{action 'addRecord'}}>Submit</button>
+		<input type="text" class="form-control" id="usr" placeholder="Title">
+		
+		{{#each listItems as |item|}}
+		<div class="addTodoElementInput">
+			{{input type="text" value = item class="form-control" placeholder="Todo list item"}}
+		</div>
+		{{/each}}
+
+		<div class="addTodoElementButton">
+				<a class="" {{action 'addNewListItem'}}><h3 class="glyphicon glyphicon-plus-sign icon-success"></h3></a>
+		</div>
+
+	{{/if}}
+	<div class="row">
+		{{#each model as |record|}}
+	    <div class="col-md-4">
+	      <div class="panel panel-default library-item">
+	      	{{#if editingRecord}}
+		        <div class="panel-heading">
+		          <h3 class="panel-title">{{record.title}}</h3>
+		        </div>
+		        <div class="panel-body">
+		        	{{#each record.elements as |item|}}
+		          		<p>{{item}}</p>
+		          	{{/each}}
+		        </div>
+		        <div class="panel-footer text-right">
+		          <button class="btn btn-warning btn-xs" {{action 'toggleEdit' record}}>Edit</button>
+		          <button class="btn btn-danger btn-xs" {{action 'deleteRecord' record}}>Delete</button>
+		        </div>
+	       	{{else}}
+		        <div class="panel-heading">
+		          {{input type="text" class="form-control" value=record.title}}
+		        </div>
+		        <div class="panel-body">
+		        	{{#each record.elements as |item|}}
+		          		{{input type="text" class="form-control" value=item}}
+		          		<button class="btn btn-success btn-xs" {{action 'editRecord' item}}>Save</button>
+		          	{{/each}}
+		          	{{record.elements.ID}}
+		        </div>
+		        <div class="panel-footer text-right">
+		          <button class="btn btn-info btn-xs" {{action 'toggleEdit'}}>Cancel</button>
+		          <button class="btn btn-success btn-xs" {{action 'editRecord' record}}>Save</button>
+		        </div>
+	        {{/if}}
+	      </div>
+	    </div>
+	    {{/each}}
+	</div>
+</div>
